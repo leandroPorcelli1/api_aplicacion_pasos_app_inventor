@@ -24,5 +24,5 @@ def crear_registro():
 
 @routes.route('/registros', methods=['GET'])
 def obtener_registros():
-    registros = Registro.query.order_by(desc(Registro.fecha)).all()
+    registros = Registro.query.order_by(desc(Registro.fecha), desc(Registro.id)).all()
     return jsonify([r.to_dict() for r in registros]), 200
