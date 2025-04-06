@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from models import Registro
 from database import db
 from datetime import datetime
+from sqlalchemy import desc
 
 routes = Blueprint('routes', __name__)
 
@@ -23,5 +24,5 @@ def crear_registro():
 
 @routes.route('/registros', methods=['GET'])
 def obtener_registros():
-    registros = Registro.query.all()
+    registros = Registro.query.order_by(desc(Registro.fecha)).all()
     return jsonify([r.to_dict() for r in registros]), 200
