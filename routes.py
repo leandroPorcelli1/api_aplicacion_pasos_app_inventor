@@ -6,7 +6,12 @@ from sqlalchemy import desc
 
 routes = Blueprint('routes', __name__)
 
-@routes.route('/registros', methods=['POST'])
+@routes.route('/', methods=['GET'])
+def index():
+    return jsonify({"mensaje": "API de Innovtec funcionando correctamente 🚀"}), 200
+
+
+@routes.route('/registros/create', methods=['POST'])
 def crear_registro():
     data = request.get_json()
     try:

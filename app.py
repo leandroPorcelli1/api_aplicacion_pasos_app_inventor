@@ -16,6 +16,8 @@ def create_app():
     app.register_blueprint(routes)
     return app
 
+# Asegúrate de que esto esté fuera de la función
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True)
